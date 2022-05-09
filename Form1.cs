@@ -36,5 +36,20 @@ namespace Evaluation_Manager
 		{
 
 		}
+
+		private void Form1_Load(object sender, EventArgs e)
+		{
+
+		}
+
+		private void cboxActivities_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			Activity  cboxActivities.SelectedItem as Activity; 
+		}
+
+		private void btnCancel_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
 	}
 }

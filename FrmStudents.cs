@@ -1,4 +1,5 @@
-﻿using Evaluation_Manager.Repositories;
+﻿using Evaluation_Manager.Models;
+using Evaluation_Manager.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,14 +14,21 @@ namespace Evaluation_Manager
 {
     public partial class FrmStudents : Form
     {
-        public FrmStudents()
+
+        private Student student;
+		private object cboActivities;
+
+		public FrmStudents(Student selectedStudent)
         {
             InitializeComponent();
+            student = selectedStudent;
         }
 
         private void FrmStudents_Load(object sender, EventArgs e)
         {
-            ShowStudents();
+			Text = student.FirstName + " " + student.LastName;
+            List<Activity> activites = ActivityRepository.GetActivities();
+            cboActivities.DataSource = activites;
         }
 
         private void ShowStudents()
@@ -33,5 +41,15 @@ namespace Evaluation_Manager
             dgvStudents.Columns["LastName"].DisplayIndex = 2;
             dgvStudents.Columns["Grade"].DisplayIndex = 3;
         }
-    }
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			Student selectedStudents = dgv.CurrentRow.DataBoundItem as Student;
+            if (selectedStudents != null)
+			{
+				FrmEvaluation frmEvaluation = new FrmEvaluation(selectedStudents);
+                frmEvaluation.ShowDialog();
+			}
+		}
+	}
 }

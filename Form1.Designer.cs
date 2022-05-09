@@ -83,6 +83,7 @@
 			this.cboxActivities.Name = "cboxActivities";
 			this.cboxActivities.Size = new System.Drawing.Size(184, 21);
 			this.cboxActivities.TabIndex = 3;
+			this.cboxActivities.SelectedIndexChanged += new System.EventHandler(this.cboxActivities_SelectedIndexChanged);
 			// 
 			// txtMinForSignature
 			// 
@@ -177,6 +178,7 @@
 			this.btnCancel.TabIndex = 16;
 			this.btnCancel.Text = "Odustani";
 			this.btnCancel.UseVisualStyleBackColor = true;
+			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 			// 
 			// Form1
 			// 
@@ -200,6 +202,7 @@
 			this.Controls.Add(this.label1);
 			this.Name = "Form1";
 			this.Text = "Form1";
+			this.Load += new System.EventHandler(this.Form1_Load);
 			((System.ComponentModel.ISupportInitialize)(this.numPoints)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
